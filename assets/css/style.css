@@ -3,7 +3,7 @@
     margin: 0
 }
 
-h1 {
+#mainheader {
     color: white;
     justify-content: center;
     text-align: center;
@@ -13,3 +13,34 @@ h1 {
     display: flex;
     flex-wrap: wrap;
 }
+
+#searchcont {
+    margin: 10px;
+    width: 25%;
+}
+#city {
+    width: 100%;
+    height: 60px;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+#searchbtn {
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    background-color: #56b3ea;
+    border: none;
+    color: white;
+    border-radius: 10px;
+
+}
+
+main h1 {
+    font-size: 40px;
+    margin-top: 10px;
+}
+
