@@ -7,7 +7,7 @@
     color: white;
     justify-content: center;
     text-align: center;
-    font-size: 50px;
+    font-size: 60px;
     background-image: linear-gradient(to right, #1989B9, darkblue);
     height: auto;
     display: flex;
@@ -18,6 +18,10 @@
     margin: 10px;
     width: 25%;
 }
+#citysearch {
+    font-size: 40px;
+    margin-top: 10px;
+}
 #city {
     width: 100%;
     height: 60px;
@@ -25,22 +29,43 @@
     margin-top: 10px;
     margin-bottom: 5px;
     border-radius: 10px;
+    padding: 10px;
 }
 #searchbtn {
     width: 100%;
-    height: 60px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    height: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     font-size: 20px;
     background-color: #56b3ea;
     border: none;
     color: white;
     border-radius: 10px;
-
+    cursor: pointer;
 }
-
-main h1 {
-    font-size: 40px;
-    margin-top: 10px;
+hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: 7px;
+    background-color: darkgrey;
+    border: none;
+}
+ul {
+    padding-inline-start: 0px;
+}
+.searchcities {
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    background-color: darkgrey;
+    border: none;
+    color: black;
+    border-radius: 10px;
+    list-style: none;
+    text-align: center;
+    padding-inline-start: 0px;
+    
 }
 
