@@ -5,8 +5,11 @@
 
 h1 {
     color: white;
+    justify-content: center;
     text-align: center;
     font-size: 50px;
     background-image: linear-gradient(to right, #1989B9, darkblue);
-    height: 70px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
 }
