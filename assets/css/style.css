@@ -3,6 +3,9 @@
     margin: 0
 }
 
+
+
+/* Begin of styling for search for city */
 #mainheader {
     color: white;
     justify-content: center;
@@ -13,7 +16,10 @@
     display: flex;
     flex-wrap: wrap;
 }
-
+main {
+    display: flex;
+    flex-direction: row;
+}
 #searchcont {
     margin: 10px;
     width: 25%;
@@ -53,7 +59,7 @@ hr {
 ul {
     padding-inline-start: 0px;
 }
-.searchcities {
+li {
     width: 100%;
     height: auto;
     margin-top: 15px;
@@ -66,6 +72,33 @@ ul {
     list-style: none;
     text-align: center;
     padding-inline-start: 0px;
-    line-height: 50px;
+    line-height: 55px;
 }
+/* End of styling for search for city */
 
+
+/* Begin section for current day */
+#currentday {
+    width: 70%;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: none;
+}
+#location {
+    font-size: 50px;
+    margin: 20px;
+}
+#temp {
+    margin: 20px;
+}
+#wind {
+    margin: 20px;
+}
+#humidity {
+    margin: 20px;
+}
+#uvindex {
+    margin: 20px;
+}

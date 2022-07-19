@@ -9,16 +9,27 @@
     <body>
         <h1 id="mainheader">Weather Dashboard</h1>
         <main>
-            <div id="searchcont">
+            <section id="searchcont">
                 <h1 id="citysearch">Search for a City:</h1>
                 <input type="text" id="city" placeholder="Mesa">
                 <button id="searchbtn">Search</button>
                 <hr>
-                <ul></ul>
-            </div>
+                <ul id="listcity"></ul>
+            </section>
+
+            <section id="currentday">
+                <h1 id="location"></h1>
+                <h2 id="temp"></h2>
+                <h2 id="wind"></h2>
+                <h2 id="humidity"></h2>
+                <h2 id="uvindex"></h2>
+            </section>
+
+            <span id="response-text"></span>
         </main>
     </body>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </html>
