@@ -2,7 +2,6 @@ var APIKey = "9c2f191921ea4a448012e7d41b8872c0";
 var city = $("#city");
 var searchBtn = $("#searchbtn").click(getApiCity);
 var listCity = $('#listcity');
-var responseText = document.getElementById('response-text');
 
 
 function getApiCity() {
@@ -20,10 +19,10 @@ function getApiCity() {
         var iconWeather = data.weather[0].icon
         var imgEl = $('<img />',
             {id: "img",
-             src: "https://openweathermap.org/img/wn/" + iconWeather + ".png",
-             width: 200
+             src: "https://openweathermap.org/img/w/" + iconWeather + ".png",
+             width: 50
             })
-            console.log(imgEl)
+            // console.log(imgEl)
         //console.log(lat); console.log(data); console.log(lon);
         $('#location').text(data.name + " " + "(" + moment().format("MM/DD/YYYY") + ")");
         $('#location').append(imgEl);
@@ -43,7 +42,7 @@ function getApiLatLon(lat, lon) {
     })
     .then(function (data) {
         var uvi = data.current.uvi
-        // console.log(data)
+        console.log(data)
         $('#currentday').show()
         $('#uvindex').text("UV Index: " + uvi)
         if (uvi <= 3) {
@@ -59,6 +58,38 @@ function getApiLatLon(lat, lon) {
             $('#uvindex').css("background-color", "yellow");
             $('#uvindex').css("color", "black");
         }
+
+        $('#fivedayforecast').show()
+        $('#forecastheader').show()
+        // debugger
+        for (var i = 1; i < 6 ; i++) {
+        var cardDate = (moment.unix(data.daily[i].dt).format("MM/DD/YYYY"));
+        var cardImgEl = $('<img />',
+            {id: "img",
+             src: "https://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png",
+             width: 50
+            })
+        var cardTemp = ("Temp: " + data.daily[i].temp.max + "°F");
+        var cardWind = ("Wind: " + data.daily[i].wind_speed + " MPH");
+        var cardHumidity = ("Humidity: " + data.daily[i].humidity + "%");
+        var card = $('<card />')
+        card.attr("class", "card")
+
+        
+        $('#fivedayforecast').append(card)
+
+        $(card).append('<div id="cardDate">' + cardDate + '</div>');
+        $(card).append(cardImgEl);
+        $(card).append('<div id="cardTemp">' + cardTemp + '</div>');
+        $(card).append('<div id="cardWind">' + cardWind + '</div>');
+        $(card).append('<div id="cardHumidity">' + cardHumidity + '</div>');
+
+        }
+        
+        
+        
+       
+
     }
 )};
 

@@ -3,29 +3,38 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/css/style.css">
         <title>Weather-Dashboard</title>
     </head>
     <body>
         <h1 id="mainheader">Weather Dashboard</h1>
         <main>
-            <section id="searchcont">
-                <h1 id="citysearch">Search for a City:</h1>
-                <input type="text" id="city" placeholder="Mesa">
-                <button id="searchbtn">Search</button>
-                <hr>
-                <ul id="listcity"></ul>
-            </section>
+            <div id="main">
+                <section class="col-3" id="searchcont">
+                    <h1 id="citysearch">Search for a City:</h1>
+                    <input type="text" id="city" placeholder="Mesa">
+                    <button id="searchbtn">Search</button>
+                    <hr>
+                    <ul id="listcity">
+                    </ul>
+                </section>
 
-            <section id="currentday">
-                <h1 id="location"></h1> 
-                <h2 id="temp"></h2>
-                <h2 id="wind"></h2>
-                <h2 id="humidity"></h2>
-                <h2 id="uvindex"></h2>
-            </section>
-
-            <span id="response-text"></span>
+                <div class="col-9">
+                    <section id="currentday">
+                        <h1 id="location"></h1> 
+                        <h2 id="temp"></h2>
+                        <h2 id="wind"></h2>
+                        <h2 id="humidity"></h2>
+                        <h2 id="uvindex"></h2>
+                    </section>
+                
+                    <h1 id="forecastheader">5-Day Forecast:</h1>
+                    <section id="fivedayforecast">
+                        
+                    </section>
+                </div>
+            </div>
         </main>
     </body>
 

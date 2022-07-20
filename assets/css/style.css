@@ -10,28 +10,28 @@
     color: white;
     justify-content: center;
     text-align: center;
-    font-size: 60px;
+    font-size: 40px;
     background-image: linear-gradient(to right, #1989B9, darkblue);
     height: auto;
     display: flex;
     flex-wrap: wrap;
 }
-main {
+#main {
     display: flex;
-    flex-direction: row;
 }
 #searchcont {
     margin: 10px;
     width: 25%;
 }
 #citysearch {
-    font-size: 40px;
+    font-size: 30px;
     margin-top: 10px;
 }
 #city {
     width: 100%;
     height: 60px;
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: lighter;
     margin-top: 10px;
     margin-bottom: 5px;
     border-radius: 10px;
@@ -43,6 +43,7 @@ main {
     margin-top: 15px;
     margin-bottom: 15px;
     font-size: 20px;
+    font-weight: lighter;
     background-color: #56b3ea;
     border: none;
     color: white;
@@ -79,29 +80,78 @@ li {
 
 /* Begin section for current day */
 #currentday {
-    width: 70%;
     border: 1px solid black;
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 20px;
     display: none;
 }
 #location {
-    font-size: 50px;
-    margin: 20px;
+    font-size: 30px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
 }
 #temp {
     margin: 20px;
+    font-size: 20px;
+    font-weight: lighter;
 }
 #wind {
     margin: 20px;
+    font-size: 20px;
+    font-weight: lighter;
 }
 #humidity {
     margin: 20px;
+    font-size: 20px;
+    font-weight: lighter;
 }
 #uvindex {
     margin: 15px;
     padding: 8px;
-    width: 178px;
+    width: 150px;
     border-radius: 10px;
+    font-size: 20px;
+    font-weight: lighter;
+}
+#img {
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+#fivedayforecast{
+    margin: 20px;  
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#forecastheader{
+    display: none;
+    margin: 20px;  
+}
+.card {
+    background-color: #384A6A;
+    margin-right: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 200px;
+    color: white;
+}
+#cardDate {
+    font-size: 25px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+#cardTemp {
+    font-size: 20px;
+    margin: 10px;
+}
+#cardWind {
+    font-size: 20px;
+    margin: 10px;
+}
+#cardHumidity {
+    font-size: 20px;
+    margin: 10px;
 }
