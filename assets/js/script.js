@@ -25,7 +25,7 @@ function getApiCity() {
             })
             console.log(imgEl)
         //console.log(lat); console.log(data); console.log(lon);
-        $('#location').text(data.name + " " + moment().format("MM/DD/YYYY"));
+        $('#location').text(data.name + " " + "(" + moment().format("MM/DD/YYYY") + ")");
         $('#location').append(imgEl);
         $('#temp').text('Temp: ' + data.main.temp + "°F");
         $('#wind').text('Wind: ' + data.wind.speed + " MPH");
