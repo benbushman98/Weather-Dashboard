@@ -80,6 +80,7 @@ li {
 /* Begin section for current day */
 #currentday {
     width: 70%;
+    background-color: orange;
     border: 1px solid black;
     margin-top: 10px;
     margin-left: 20px;
@@ -100,5 +101,8 @@ li {
     margin: 20px;
 }
 #uvindex {
-    margin: 20px;
+    margin: 15px;
+    padding: 8px;
+    width: 178px;
+    border-radius: 10px;
 }

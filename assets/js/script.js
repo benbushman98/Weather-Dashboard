@@ -20,19 +20,21 @@ function getApiCity() {
         return response.json();
     })
     .then(function (data) {
-        var lat = (data.coord.lat)
-        var lon = (data.coord.lon)
-        var img = $('#img.this.src');
-        console.log(img)
-        // console.log(lat)
-        // console.log(data)
-        // console.log(lon)
-        $('#location').text(data.name + " " + moment().format("MM/DD/YYYY "));
-        $('#img').text(img + data.weather[0].icon + "@2x.png");
+        var lat = (data.coord.lat);
+        var lon = (data.coord.lon);
+        var imgEl = $('<img />',
+            {id: "img",
+             src: "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png",
+             width: 200
+            })
+        imgEl.appendTo($('#location'));
+        console.log(imgEl);
+        //console.log(lat); console.log(data); console.log(lon);
+        $('#location').text(data.name + " " + moment().format("MM/DD/YYYY"));
         $('#temp').text('Temp: ' + data.main.temp + "°F");
         $('#wind').text('Wind: ' + data.wind.speed + " MPH");
-        $('#humidity').text("Humidity: " + data.main.humidity + "%")
-        getApiLatLon(lat, lon)
+        $('#humidity').text("Humidity: " + data.main.humidity + "%");
+        getApiLatLon(lat, lon);
     },
     
 )};
@@ -45,9 +47,23 @@ function getApiLatLon(lat, lon) {
         return response.json();
     })
     .then(function (data) {
+        var uvi = data.current.uvi
         console.log(data)
         $('#currentday').show()
-        $('#uvindex').text("UV Index: " + data.current.uvi)
+        $('#uvindex').text("UV Index: " + uvi)
+        if (uvi <= 3) {
+            console.log("low")
+            $('#uvindex').css("background-color", "green");
+            $('#uvindex').css("color", "white");
+        } else if (uvi >= 6) {
+            console.log("high")
+            $('#uvindex').css("background-color", "red");
+            $('#uvindex').css("color", "white");
+        } else {
+            console.log("medium")
+            $('#uvindex').css("background-color", "yellow");
+            $('#uvindex').css("color", "black");
+        }
     }
 )};
 
