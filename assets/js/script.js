@@ -3,7 +3,7 @@ var city = $("#city");
 var lat;
 var lon;
 var queryUrlCity = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
-var queryUrlLatLon = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,daily&appid=" + APIKey + "&units=imperial";
+var queryUrlLatLon = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly&appid=" + APIKey + "&units=imperial";
 var searchBtn = $("#searchbtn").click(getApiCity);
 var listCity = $('#listcity');
 
@@ -22,10 +22,13 @@ function getApiCity() {
     .then(function (data) {
         var lat = (data.coord.lat)
         var lon = (data.coord.lon)
-        console.log(lat)
-        console.log(data)
-        console.log(lon)
-        $('#location').text(data.name + " " + moment().format("MM/DD/YYYY ") + data.weather[0].icon +".png");
+        var img = $('#img.this.src');
+        console.log(img)
+        // console.log(lat)
+        // console.log(data)
+        // console.log(lon)
+        $('#location').text(data.name + " " + moment().format("MM/DD/YYYY "));
+        $('#img').text(img + data.weather[0].icon + "@2x.png");
         $('#temp').text('Temp: ' + data.main.temp + "°F");
         $('#wind').text('Wind: ' + data.wind.speed + " MPH");
         $('#humidity').text("Humidity: " + data.main.humidity + "%")
@@ -35,7 +38,7 @@ function getApiCity() {
 )};
 
 function getApiLatLon(lat, lon) {
-    queryUrlLatLon = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,daily&appid=" + APIKey + "&units=imperial";
+    queryUrlLatLon = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly&appid=" + APIKey + "&units=imperial";
     fetch(queryUrlLatLon)
     .then(function (response) {
         console.log (response);
