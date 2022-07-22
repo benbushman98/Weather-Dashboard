@@ -2,11 +2,24 @@ var APIKey = "9c2f191921ea4a448012e7d41b8872c0";
 var searchBtn = $("#searchbtn");
 
 
+
+var savedCity = JSON.parse(window.localStorage.getItem("SearchedCity")) || [];
+if (localStorage !== null) {
+    // console.log("displayCity");
+    displayCity(savedCity);
+}
+
+
+
 searchBtn.click(getApiCity);
-
-
 function getApiCity() {
     var city = $("#city").val();
+    if (city === "") {
+        $('#city').attr("placeholder", "Input City Name")
+        $('#city').append('<style>#city::placeholder{color:red}</style>')
+    } else {
+    $('#city').attr("placeholder", "Mesa")
+    $('#city').append('<style>#city::placeholder{color:grey}</style>')
     $('#fivedayforecast').empty();
     queryUrlCity = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
     // console.log(queryUrlCity)
@@ -33,7 +46,7 @@ function getApiCity() {
         $('#humidity').text("Humidity: " + data.main.humidity + "%");
         getApiLatLon(lat, lon);
     },
-)};
+)}};
 
 function getApiLatLon(lat, lon) {
     queryUrlLatLon = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly&appid=" + APIKey + "&units=imperial";
@@ -107,25 +120,29 @@ function storeCity() {
 
     window.localStorage.setItem("SearchedCity", JSON.stringify(savedCity));
     city.val('')
-    console.log("displayCity");
-    console.log(savedCity)
+    // console.log("displayCity");
+    // console.log(savedCity)
     
     displayCity(savedCity);
 }
 
 
-    var savedCity = JSON.parse(window.localStorage.getItem("SearchedCity")) || [];
-    if (localStorage !== null) {
-        // console.log("displayCity");
-        displayCity(savedCity);
-    }
-
 function displayCity(savedCity) {
     var listCity = $('#listcity');
     listCity.empty()
     for (let i = 0; i < savedCity.length; i++) {
-        listCity.append('<button id="citylist">' + savedCity[i].cityName + '</button>')
+        listCity.append('<button class="cityBtn">' + savedCity[i].cityName + '</button>')
         // console.log(savedCity[i].cityName)
         
     }   
+    
+    // var cityBtn = document.querySelector(".cityBtn")
+
+    // cityBtn.addEventListener("click",cityBtnFunc)
+
+    // function cityBtnFunc() {
+    // var city = cityBtn.innerHTML
+    // console.log(city)
+    // }
 }
+

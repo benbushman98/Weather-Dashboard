@@ -165,7 +165,7 @@ li {
     font-size: 20px;
     margin: 10px;
 }
-#citylist {
+.cityBtn {
     border:none;
     cursor: pointer;
     background-color: lightgrey;
@@ -183,7 +183,10 @@ li {
     padding-inline-start: 0px;
     line-height: 55px;
 }
-#citylist:focus {
+.cityBtn:focus {
     border: none;
     outline: none;
+}
+.cityBtn:hover {
+    background-color: darkgrey;
 }
