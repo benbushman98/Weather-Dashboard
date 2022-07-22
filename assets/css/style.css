@@ -20,7 +20,10 @@
     display: flex;
 }
 #searchcont {
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 10px;
     width: 25%;
 }
 #citysearch {
@@ -89,7 +92,10 @@ li {
 /* Begin section for current day */
 #currentday {
     border: 1px solid black;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 40px;
     display: none;
 }
 #location {
