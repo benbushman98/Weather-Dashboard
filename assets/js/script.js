@@ -1,11 +1,13 @@
 var APIKey = "9c2f191921ea4a448012e7d41b8872c0";
-var city = $("#city");
-var searchBtn = $("#searchbtn").click(getApiCity);
-var listCity = $('#listcity');
+var searchBtn = $("#searchbtn");
+
+
+searchBtn.click(getApiCity);
 
 
 function getApiCity() {
-    city = $("#city").val()
+    var city = $("#city").val();
+    $('#fivedayforecast').empty();
     queryUrlCity = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
     // console.log(queryUrlCity)
     fetch(queryUrlCity)
@@ -21,7 +23,7 @@ function getApiCity() {
             {id: "img",
              src: "https://openweathermap.org/img/w/" + iconWeather + ".png",
              width: 50
-            })
+            });
             // console.log(imgEl)
         //console.log(lat); console.log(data); console.log(lon);
         $('#location').text(data.name + " " + "(" + moment().format("MM/DD/YYYY") + ")");
@@ -41,15 +43,15 @@ function getApiLatLon(lat, lon) {
         return response.json();
     })
     .then(function (data) {
-        var uvi = data.current.uvi
-        console.log(data)
+        var uvi = data.current.uvi;
+        // console.log(data)
         $('#currentday').show()
         $('#uvindex').text("UV Index: " + uvi)
-        if (uvi <= 3) {
+        if (uvi <= 3.99) {
             // console.log("low")
             $('#uvindex').css("background-color", "green");
             $('#uvindex').css("color", "white");
-        } else if (uvi >= 6) {
+        } else if (uvi >= 6.99) {
             // console.log("high")
             $('#uvindex').css("background-color", "red");
             $('#uvindex').css("color", "white");
@@ -59,25 +61,26 @@ function getApiLatLon(lat, lon) {
             $('#uvindex').css("color", "black");
         }
 
-        $('#fivedayforecast').show()
-        $('#forecastheader').show()
+        $('#fivedayforecast').show();
+        $('#forecastheader').show();
         // debugger
         for (var i = 1; i < 6 ; i++) {
+            
         var cardDate = (moment.unix(data.daily[i].dt).format("MM/DD/YYYY"));
         var cardImgEl = $('<img />',
             {id: "img",
              src: "https://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png",
              width: 50
-            })
+            });
         var cardTemp = ("Temp: " + data.daily[i].temp.max + "°F");
         var cardWind = ("Wind: " + data.daily[i].wind_speed + " MPH");
         var cardHumidity = ("Humidity: " + data.daily[i].humidity + "%");
-        var card = $('<card />')
-        card.attr("class", "card")
+        var card = $('<card />');
 
+        card.attr("class", "card");
+
+        $('#fivedayforecast').append(card);
         
-        $('#fivedayforecast').append(card)
-
         $(card).append('<div id="cardDate">' + cardDate + '</div>');
         $(card).append(cardImgEl);
         $(card).append('<div id="cardTemp">' + cardTemp + '</div>');
@@ -85,47 +88,44 @@ function getApiLatLon(lat, lon) {
         $(card).append('<div id="cardHumidity">' + cardHumidity + '</div>');
 
         }
-        
-        
-        
-       
-
+        storeCity();
     }
+    
 )};
 
 
 
+function storeCity() {
+    var savedCity = JSON.parse(window.localStorage.getItem("SearchedCity")) || [];
+    var city = $("#city")
 
+    var cityElInput = {
+        cityName: city.val()
+        };
+        
+    savedCity.push(cityElInput)
 
-
-
-
-
-
-
-
-// init();
-// function init(){
-// var storedCity = JSON.parse(window.localStorage.getItem("SearchedCity")) || [];
-// listCity.append('<li>' + storedCity + '</li>')
-// }
-
-
-// function cityInput(storedCity) {
-//     for (var i = 0; i < storedCity.length; i++) {
-//         listCity.append('<li>' + storedCity[i].City + '</li>')
-//         city.val("") 
-//     }
+    window.localStorage.setItem("SearchedCity", JSON.stringify(savedCity));
+    city.val('')
+    console.log("displayCity");
+    console.log(savedCity)
     
-// }
+    displayCity(savedCity);
+}
 
 
-// function displayCity() {
-//     storedCity = JSON.parse(window.localStorage.getItem("SearchedCity")) || [];
-//     cityVal = {
-//         City: city.val()
-//     }
-//     storedCity.push(cityVal);
-//     window.localStorage.setItem("SearchedCity", JSON.stringify(storedCity));
-// cityInput(storedCity)
-// }
+    var savedCity = JSON.parse(window.localStorage.getItem("SearchedCity")) || [];
+    if (localStorage !== null) {
+        // console.log("displayCity");
+        displayCity(savedCity);
+    }
+
+function displayCity(savedCity) {
+    var listCity = $('#listcity');
+    listCity.empty()
+    for (let i = 0; i < savedCity.length; i++) {
+        listCity.append('<button id="citylist">' + savedCity[i].cityName + '</button>')
+        // console.log(savedCity[i].cityName)
+        
+    }   
+}

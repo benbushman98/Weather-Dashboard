@@ -26,6 +26,7 @@
 #citysearch {
     font-size: 30px;
     margin-top: 10px;
+    font-weight: bold;
 }
 #city {
     width: 100%;
@@ -49,6 +50,13 @@
     color: white;
     border-radius: 10px;
     cursor: pointer;
+}
+#searchbtn:hover{
+    background-color: #1989B9;
+}
+#searchbtn:focus{
+    outline:none;
+    border: none;
 }
 hr {
     margin-top: 4px;
@@ -89,6 +97,7 @@ li {
     margin-top: 5px;
     margin-left: 20px;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 #temp {
     margin: 20px;
@@ -127,6 +136,7 @@ li {
 #forecastheader{
     display: none;
     margin: 20px;  
+    font-size: 30px;
 }
 .card {
     background-color: #384A6A;
@@ -154,4 +164,26 @@ li {
 #cardHumidity {
     font-size: 20px;
     margin: 10px;
+}
+#citylist {
+    border:none;
+    cursor: pointer;
+    background-color: lightgrey;
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    background-color: lightgrey;
+    border: none;
+    color: black;
+    border-radius: 10px;
+    list-style: none;
+    text-align: center;
+    padding-inline-start: 0px;
+    line-height: 55px;
+}
+#citylist:focus {
+    border: none;
+    outline: none;
 }
