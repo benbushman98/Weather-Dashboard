@@ -1,16 +1,18 @@
+// Global Variables
 var APIKey = "9c2f191921ea4a448012e7d41b8872c0";
 var searchBtn = $("#searchbtn");
+// End Global Variables
 
-
-
+// Pull from Local Storage and Render to Screen
 var savedCity = JSON.parse(window.localStorage.getItem("SearchedCity")) || [];
 if (localStorage !== null) {
     // console.log("displayCity");
     displayCity(savedCity);
 }
+// End Pull from Local Storage and Render to Screen
 
 
-
+// Run API to get Lat and Lon from City
 searchBtn.click(getApiCity);
 function getApiCity() {
     var city = $("#city").val();
@@ -50,7 +52,10 @@ function getApiCity() {
             )
     }
 };
+// End Run API to get Lat and Lon from City
 
+
+// Run API to get information from Lat and Lon
 function getApiLatLon(lat, lon) {
     queryUrlLatLon = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly&appid=" + APIKey + "&units=imperial";
     fetch(queryUrlLatLon)
@@ -110,40 +115,37 @@ function getApiLatLon(lat, lon) {
 
         )
 };
+// End Run API to get information from Lat and Lon
 
-
-
+// Store information to local storage
 function storeCity() {
     var savedCity = JSON.parse(window.localStorage.getItem("SearchedCity")) || [];
     var city = $("#city")
-
     var cityElInput = {
         cityName: city.val()
     };
-
     savedCity.push(cityElInput)
-
     window.localStorage.setItem("SearchedCity", JSON.stringify(savedCity));
     city.val('')
     // console.log("displayCity");
     // console.log(savedCity)
-
     displayCity(savedCity);
 }
-
-
 function displayCity(savedCity) {
     var listCity = $('#listcity');
     listCity.empty()
     for (let i = 0; i < savedCity.length; i++) {
         if (savedCity[i].cityName === ""){
         } else {
-        
+    
         listCity.append('<button class="cityBtn" data-value="' + savedCity[i].cityName + '">' + savedCity[i].cityName + '</button>')
         // console.log(savedCity[i].cityName)
     }
 }
+// End Store information to local storage
 
+
+// Click Button to run searched cities again
     $(".cityBtn").click(function () {
         var newCity = ($(this).attr("data-value"))
         console.log(newCity)
@@ -177,3 +179,4 @@ function displayCity(savedCity) {
             )
     })
 }
+// End Button to run searched cities again

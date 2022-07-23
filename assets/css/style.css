@@ -61,6 +61,7 @@
     outline:none;
     border: none;
 }
+
 hr {
     margin-top: 4px;
     margin-bottom: 4px;
@@ -132,7 +133,9 @@ li {
     vertical-align: middle;
     margin-left: 8px;
 }
+/* End section for current day */
 
+/* Begin section for 5 day forecast */
 #fivedayforecast{
     margin: 20px;  
     display: flex;
@@ -171,6 +174,10 @@ li {
     font-size: 20px;
     margin: 10px;
 }
+/* End section for 5 day forecast */
+
+
+/* Begin Already searched city buttons */
 .cityBtn {
     border:none;
     cursor: pointer;
@@ -196,3 +203,4 @@ li {
 .cityBtn:hover {
     background-color: darkgrey;
 }
+/*End Already searched city buttons */
